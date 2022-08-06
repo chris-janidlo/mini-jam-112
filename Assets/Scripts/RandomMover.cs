@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace mj112
 {
-    public class RandomMover : MonoBehaviour, IClockFollower
+    public class RandomMover : PrefabEchoable, IClockFollower
     {
         Vector2 direction;
         float timer;
@@ -17,6 +17,11 @@ namespace mj112
         void OnDestroy ()
         {
             Clock.Instance.Deregister(this);
+        }
+
+        public override object GetState ()
+        {
+            return (transform.position, transform.rotation, transform.localScale);
         }
 
         public void TimedUpdate ()

@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3961582083061183124}
   - component: {fileID: 3961582083061183125}
-  - component: {fileID: 3961582083061183126}
-  - component: {fileID: 326834608202968087}
   m_Layer: 0
-  m_Name: Random Mover
+  m_Name: Random Mover Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3961582083061183127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5814924, y: 1.2114477, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87,31 +85,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3961582083061183126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3961582083061183127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8230095b386ecb4ca46e912fd6c7950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &326834608202968087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3961582083061183127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61ceebd429fd67f4a835fc137b66a130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EchoPrefab: {fileID: 293222038107238466, guid: 1649ba62f98308048a90bd42012da9c8,
-    type: 3}
-  PoolDefaultCapacity: 10
-  PoolMaxSize: 10000

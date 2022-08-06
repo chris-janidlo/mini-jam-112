@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,92 +8,120 @@ namespace mj112
 {
     public class TimeEchoer : MonoBehaviour, IClockFollower
     {
-        public struct TransformRecord
+        class EchoStateRepository
         {
-            public Vector3 Position, Scale;
-            public Quaternion Rotation;
+            private readonly Dictionary<(int, Guid), object> storage = new ();
+            private readonly HashSet<Guid> dataProcessedThisFrame = new ();
+
+            public void SetRecord (int frameNumber, Guid echoGuid, object state)
+            {
+                storage[(frameNumber, echoGuid)] = state;
+            }
+
+            public bool TryGetRecord (int frameNumber, Guid echoGuid, out object state)
+            {
+                return storage.TryGetValue((frameNumber, echoGuid), out state);
+            }
+
+            public void MarkAsProcessed (Guid echoGuid)
+            {
+                dataProcessedThisFrame.Add(echoGuid);
+            }
+
+            public void ClearProcessedCache ()
+            {
+                dataProcessedThisFrame.Clear();
+            }
+
+            public IEnumerable<(Guid, object)> GetUnprocessedData (int frameNumber)
+            {
+                foreach (var key in storage.Keys)
+                {
+                    if (key.Item1 == frameNumber && !dataProcessedThisFrame.Contains(key.Item2))
+                    {
+                        yield return (key.Item2, storage[key]);
+                    }
+                }
+            }
         }
 
-        public GameObject EchoPrefab;
+        public Echoable Echoable;
         public int PoolDefaultCapacity = 10, PoolMaxSize = 10000;
 
-        ObjectPool<GameObject> prefabPool;
-        Dictionary<int, List<TransformRecord>> frameBuffer;
-        List<GameObject> lastFramesEchoes;
+        readonly EchoStateRepository echoStateRepository = new ();
+        readonly List<Echo> currentEchoes = new ();
+
+        ObjectPool<Echo> echoPool;
+        Guid recordingGuid;
 
         void Start ()
         {
-            Clock.Instance.Register(this);
+            Clock.Instance.Register(this, onTimeJumped);
 
-            prefabPool = new ObjectPool<GameObject>
+            echoPool = new ObjectPool<Echo>
             (
-                poolCreateFunc,
-                poolActionOnGet,
-                poolActionOnRelease,
-                poolActionOnDestroy,
+                createFunc: Echoable.CreateEcho,
+                actionOnGet: e => e.SetActive(true),
+                actionOnRelease: e => e.SetActive(false),
+                actionOnDestroy: e => e.Kill(),
                 collectionCheck: true,
                 defaultCapacity: PoolDefaultCapacity,
                 maxSize: PoolMaxSize
             );
 
-            frameBuffer = new Dictionary<int, List<TransformRecord>>();
-            lastFramesEchoes = new List<GameObject>();
-
-            for (int i = 0; i < Clock.Instance.FramesPerLoop; i++)
-            {
-                frameBuffer[i] = new List<TransformRecord>();
-            }
+            onTimeJumped();
         }
 
         void OnDestroy ()
         {
-            Clock.Instance.Deregister(this);
+            Clock.Instance.Deregister(this, onTimeJumped);
         }
 
         public void TimedUpdate ()
         {
-            foreach (var echo in lastFramesEchoes)
+            int frame = Clock.Instance.FramesElapsedInLoop;
+
+            manageEchoes(frame);
+            recordActivity(frame);
+        }
+
+        void onTimeJumped ()
+        {
+            recordingGuid = Guid.NewGuid();
+        }
+
+        void manageEchoes (int frame)
+        {
+            for (int i = currentEchoes.Count - 1; i >= 0; i--)
             {
-                prefabPool.Release(echo);
+                Echo echo = currentEchoes[i];
+                if (echoStateRepository.TryGetRecord(frame, echo.Guid, out object state))
+                {
+                    echo.ApplyState(state);
+                    echoStateRepository.MarkAsProcessed(echo.Guid);
+                }
+                else
+                {
+                    currentEchoes.RemoveAt(i);
+                    echoPool.Release(echo);
+                }
             }
-            lastFramesEchoes.Clear();
 
-            foreach (var record in frameBuffer[Clock.Instance.FramesElapsedInLoop])
+            foreach (var (guid, state) in echoStateRepository.GetUnprocessedData(frame))
             {
-                var echo = prefabPool.Get();
+                Echo echo = echoPool.Get();
+                echo.AssignGuid(guid);
+                echo.ApplyState(state);
 
-                echo.transform.SetPositionAndRotation(record.Position, record.Rotation);
-                echo.transform.localScale = record.Scale;
-
-                lastFramesEchoes.Add(echo);
+                currentEchoes.Add(echo);
             }
 
-            frameBuffer[Clock.Instance.FramesElapsedInLoop].Add(new TransformRecord
-            {
-                Position = transform.position,
-                Rotation = transform.rotation,
-                Scale = transform.localScale,
-            });
+            echoStateRepository.ClearProcessedCache();
         }
 
-        GameObject poolCreateFunc ()
+        void recordActivity (int frame)
         {
-            return Instantiate(EchoPrefab);
-        }
-
-        void poolActionOnGet (GameObject gameObject)
-        {
-            gameObject.SetActive(true);
-        }
-
-        void poolActionOnRelease (GameObject gameObject)
-        {
-            gameObject.SetActive(false);
-        }
-
-        void poolActionOnDestroy (GameObject gameObject)
-        {
-            Destroy(gameObject);
+            echoStateRepository.SetRecord(frame, recordingGuid, Echoable.GetState());
         }
     }
 }
