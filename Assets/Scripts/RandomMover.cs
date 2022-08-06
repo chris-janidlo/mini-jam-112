@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace mj112
 {
-    public class RandomMover : PrefabEchoable, IClockFollower
+    public class RandomMover : PrefabEchoable<RandomMoverEcho, RandomMoverState>, IClockFollower
     {
         Vector2 direction;
         float timer;
@@ -19,9 +19,14 @@ namespace mj112
             Clock.Instance.Deregister(this);
         }
 
-        public override object GetState ()
+        protected override RandomMoverState GetTypedState()
         {
-            return (transform.position, transform.rotation, transform.localScale);
+            return new RandomMoverState
+            {
+                Position = transform.position,
+                Rotation = transform.rotation,
+                LocalScale = transform.localScale
+            };
         }
 
         public void TimedUpdate ()

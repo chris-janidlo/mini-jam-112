@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace mj112
 {
-    public abstract class PrefabEchoable : Echoable
+    public abstract class PrefabEchoable<TEcho, TState> : TypedEchoable<TState>
+        where TEcho : TypedEcho<TState>
     {
-        public Echo EchoPrefab;
+        public TEcho EchoPrefab;
 
-        public override Echo CreateEcho ()
+        protected override TypedEcho<TState> CreateTypedEcho ()
         {
-            Echo echo = Instantiate(EchoPrefab);
+            var echo = Instantiate(EchoPrefab);
             echo.Initialize();
             return echo;
         }

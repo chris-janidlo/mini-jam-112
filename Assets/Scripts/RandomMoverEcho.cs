@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace mj112
 {
-    public class RandomMoverEcho : Echo
+    public class RandomMoverEcho : TypedEcho<RandomMoverState>
     {
-        public override void ApplyState (object state)
+        protected override void ApplyState (RandomMoverState state)
         {
-            var castState = (ValueTuple<Vector3, Quaternion, Vector3>) state;
-
-            transform.SetPositionAndRotation(castState.Item1, castState.Item2);
-            transform.localScale = castState.Item3;
+            transform.SetPositionAndRotation(state.Position, state.Rotation);
+            transform.localScale = state.LocalScale;
         }
     }
 }
