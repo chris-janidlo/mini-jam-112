@@ -16,8 +16,8 @@ namespace mj112
         public virtual void AssignGuid (Guid guid)
         {
             Guid = guid;
+            // TODO: remove existing guid if there is one
             name += "[" + guid.ToString() + "]";
-            Debug.Log(name);
         }
 
         public virtual void SetActive (bool value)
