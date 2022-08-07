@@ -25,6 +25,8 @@ namespace mj112.Holeworms
 
         [Foldout("References")]
         public Rigidbody2D Rigidbody;
+        [Foldout("References")]
+        public string HolewormEchoTag;
 
         HolewormState state;
 
@@ -34,6 +36,16 @@ namespace mj112.Holeworms
             {
                 // TODO: pool this
                 state = HolewormState.CreateInitial(this);
+            }
+        }
+
+        void OnTriggerEnter2D (Collider2D collider)
+        {
+            if (Echo) return;
+
+            if (collider.gameObject.CompareTag(HolewormEchoTag))
+            {
+                GameOverManager.Instance.EndGame();
             }
         }
 

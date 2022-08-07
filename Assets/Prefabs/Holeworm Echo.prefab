@@ -22,6 +22,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 412888422970939584, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256940676370547304, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097472871226674701, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
     - target: {fileID: 4231379744606013374, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
       propertyPath: m_Color.b
@@ -36,6 +51,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241745946989864560, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
       objectReference: {fileID: 0}
     - target: {fileID: 4911633927242683519, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
@@ -52,6 +72,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5385225601937057730, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
     - target: {fileID: 5385225601960039806, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
       propertyPath: m_Color.b
@@ -66,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385225601960039808, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
       objectReference: {fileID: 0}
     - target: {fileID: 5385225603058166548, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
@@ -127,6 +157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Holeworm Echo
       objectReference: {fileID: 0}
+    - target: {fileID: 5385225603058166550, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
     - target: {fileID: 5385225603058166551, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -167,11 +202,114 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6500207440296313225, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738947730357063374, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130103953277348092, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_TagString
+      value: Holeworm Echo
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5385225603058166546, guid: 2ca99d39a8388474eb8719b7a8425313, type: 3}
     - {fileID: 3121234381394571022, guid: 2ca99d39a8388474eb8719b7a8425313, type: 3}
     - {fileID: 5385225603058166551, guid: 2ca99d39a8388474eb8719b7a8425313, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ca99d39a8388474eb8719b7a8425313, type: 3}
+--- !u!1 &1552434335466655618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4097472871226674701, guid: 2ca99d39a8388474eb8719b7a8425313,
+    type: 3}
+  m_PrefabInstance: {fileID: 3266938288427499919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &8048620026527144362
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552434335466655618}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &1696672230329591807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4241745946989864560, guid: 2ca99d39a8388474eb8719b7a8425313,
+    type: 3}
+  m_PrefabInstance: {fileID: 3266938288427499919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &5077850088971343746
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696672230329591807}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &3604072148679410663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2256940676370547304, guid: 2ca99d39a8388474eb8719b7a8425313,
+    type: 3}
+  m_PrefabInstance: {fileID: 3266938288427499919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &3540953734690247048
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604072148679410663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!1 &6738952293607041395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8130103953277348092, guid: 2ca99d39a8388474eb8719b7a8425313,
+    type: 3}
+  m_PrefabInstance: {fileID: 3266938288427499919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &2873120379322403714
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738952293607041395}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &7420758373748811025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5453203277033612446, guid: 2ca99d39a8388474eb8719b7a8425313,
@@ -203,3 +341,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Head: {fileID: 7420758373748811025}
+--- !u!1 &7487891026660742159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5385225601960039808, guid: 2ca99d39a8388474eb8719b7a8425313,
+    type: 3}
+  m_PrefabInstance: {fileID: 3266938288427499919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &3207556741925100758
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487891026660742159}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

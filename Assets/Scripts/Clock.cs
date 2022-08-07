@@ -22,10 +22,11 @@ namespace mj112
         public float LoopTime => (float) FramesElapsedInLoop / FramesPerLoop;
 
         List<IClockFollower> followers;
+        bool stopped;
 
         void Awake ()
         {
-            SingletonSetPersistantInstance(this);
+            SingletonOverwriteInstance(this);
 
             Time.fixedDeltaTime = DeltaTime;
 
@@ -34,6 +35,8 @@ namespace mj112
         
         void FixedUpdate ()
         {
+            if (stopped) return;
+
             foreach (var follower in followers)
             {
                 follower.TimedUpdate();
@@ -48,6 +51,11 @@ namespace mj112
                 JumpedThisFrame = true;
                 OnTimeJumped.Invoke();
             }
+        }
+
+        public void Stop ()
+        {
+            stopped = true;
         }
 
         public void Register (IClockFollower follower, UnityAction onTimeJumped = null)
