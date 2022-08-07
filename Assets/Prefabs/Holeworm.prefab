@@ -58,7 +58,9 @@ MonoBehaviour:
   - {fileID: 1493720600464057093}
   - {fileID: 6731481781990149826}
   Rigidbody: {fileID: 7738947730357063374}
+  ParadoxesEaten: {fileID: 11400000, guid: 8bf2f1319e35dca45ab2982bf43d87b8, type: 2}
   HolewormEchoTag: Holeworm Echo
+  ParadoxTag: Paradox
 --- !u!50 &7738947730357063374
 Rigidbody2D:
   serializedVersion: 4

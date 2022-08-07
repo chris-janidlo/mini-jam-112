@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 using NaughtyAttributes;
 
 namespace mj112.Holeworms
@@ -26,7 +27,10 @@ namespace mj112.Holeworms
         [Foldout("References")]
         public Rigidbody2D Rigidbody;
         [Foldout("References")]
-        public string HolewormEchoTag;
+        public IntVariable ParadoxesEaten;
+        [Foldout("References")]
+        [Tag]
+        public string HolewormEchoTag, ParadoxTag;
 
         HolewormState state;
 
@@ -43,9 +47,14 @@ namespace mj112.Holeworms
         {
             if (Echo) return;
 
-            if (collider.gameObject.CompareTag(HolewormEchoTag))
+            if (collider.CompareTag(HolewormEchoTag))
             {
                 GameOverManager.Instance.EndGame();
+            }
+            else if (collider.CompareTag(ParadoxTag))
+            {
+                collider.GetComponent<Paradox>().Kill();
+                ParadoxesEaten.Value++;
             }
         }
 
