@@ -171,6 +171,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Main Menu",
+            "id": "cb58ba73-816b-4535-9805-c103593974bf",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "8295fa63-5111-43a0-a73d-2cf596d2b832",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "da8b8db0-3d88-42b4-acc4-992e6343b6aa",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

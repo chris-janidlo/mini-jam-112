@@ -21,16 +21,16 @@ namespace mj112
         public string MainMenuScene, RestartScene;
 
         [Foldout("Animation Parameters")]
-        public float CameraZoomTime, BackgroundFadeInTime, TextFadeTime, TitleShowDelay, SubtitleShowDelay;
+        public float CameraZoomTime, TextFadeTime, TitleShowDelay, SubtitleShowDelay;
         [Foldout("Animation Parameters")]
-        public Ease CameraZoomEase, BackgroundFadeInEase, TextFadeEase;
+        public Ease CameraZoomEase, TextFadeEase;
 
-        [Foldout("References")]
-        public Image UiBackground;
         [Foldout("References")]
         public TextMeshProUGUI Title, LeftSubtitle, RightSubtitle;
         [Foldout("References")]
         public FloatVariable HorizontalInput;
+        [Foldout("References")]
+        public Camera ZoomCamera;
 
         bool endingGame, acceptingInput;
         event Action gameOver;
@@ -39,7 +39,6 @@ namespace mj112
         {
             SingletonOverwriteInstance(this);
 
-            UiBackground.SetA(0);
             Title.alpha = 0;
             LeftSubtitle.alpha = 0;
             RightSubtitle.alpha = 0;
@@ -71,12 +70,8 @@ namespace mj112
         {
             Clock.Instance.Stop();
 
-            yield return DOTween.To(() => CameraCache.Main.orthographicSize, x => CameraCache.Main.orthographicSize = x, 0.001f, CameraZoomTime)
+            yield return DOTween.To(() => ZoomCamera.orthographicSize, x => ZoomCamera.orthographicSize = x, 0.001f, CameraZoomTime)
                 .SetEase(CameraZoomEase)
-                .WaitForCompletion();
-
-            yield return UiBackground.DOFade(1, BackgroundFadeInTime)
-                .SetEase(BackgroundFadeInEase)
                 .WaitForCompletion();
 
             yield return new WaitForSeconds(TitleShowDelay);

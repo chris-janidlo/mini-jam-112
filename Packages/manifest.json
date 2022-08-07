@@ -20,6 +20,7 @@
   "dependencies": {
     "com.crass.spellbook-unity": "https://github.com/crassSandwich/spellbook-unity.git",
     "com.dbrizov.naughtyattributes": "2.1.4",
+    "com.glairedaggers.retrotvfx": "https://github.com/GlaireDaggers/RetroTVFX.git",
     "com.unity-atoms.unity-atoms-base-atoms": "4.4.5",
     "com.unity-atoms.unity-atoms-core": "4.4.5",
     "com.unity-atoms.unity-atoms-fsm": "4.4.5",

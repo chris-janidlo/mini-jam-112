@@ -14,6 +14,13 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.glairedaggers.retrotvfx": {
+      "version": "https://github.com/GlaireDaggers/RetroTVFX.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9ea13b0d33c7f1a1cc2983d035733fd5e3958589"
+    },
     "com.unity-atoms.unity-atoms-base-atoms": {
       "version": "4.4.5",
       "depth": 0,

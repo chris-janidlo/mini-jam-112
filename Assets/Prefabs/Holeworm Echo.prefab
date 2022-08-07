@@ -32,6 +32,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Holeworm Echo
       objectReference: {fileID: 0}
+    - target: {fileID: 2619551017976969546, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619551017976969546, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619551017976969546, guid: 2ca99d39a8388474eb8719b7a8425313,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.672
+      objectReference: {fileID: 0}
     - target: {fileID: 4097472871226674701, guid: 2ca99d39a8388474eb8719b7a8425313,
         type: 3}
       propertyPath: m_TagString
