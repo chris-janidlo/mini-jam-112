@@ -16,8 +16,10 @@ namespace mj112
 
         public float DeltaTime => 1f / FPS;
 
-        public float TotalLoopTime => (float) FramesPerLoop / FPS;
-        public float ElapsedLoopTime => (float) FramesElapsedInLoop / FPS;
+        /// <summary>
+        /// Has a value in [0, 1), starting at 0 and increasing over time until looping
+        /// </summary>
+        public float LoopTime => (float) FramesElapsedInLoop / FramesPerLoop;
 
         List<IClockFollower> followers;
 
