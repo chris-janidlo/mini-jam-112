@@ -17,6 +17,7 @@ namespace mj112
         {
             Guid = guid;
             name += "[" + guid.ToString() + "]";
+            Debug.Log(name);
         }
 
         public virtual void SetActive (bool value)

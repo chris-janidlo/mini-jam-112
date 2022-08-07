@@ -30,9 +30,16 @@ namespace mj112
 
             followers = new List<IClockFollower>();
         }
-         
+        
         void FixedUpdate ()
         {
+            foreach (var follower in followers)
+            {
+                follower.TimedUpdate();
+            }
+
+            JumpedThisFrame = false;
+
             FramesElapsedInLoop++;
             if (FramesElapsedInLoop >= FramesPerLoop)
             {
@@ -40,13 +47,6 @@ namespace mj112
                 JumpedThisFrame = true;
                 OnTimeJumped.Invoke();
             }
-
-            foreach (var follower in followers)
-            {
-                follower.TimedUpdate();
-            }
-
-            JumpedThisFrame = false;
         }
 
         public void Register (IClockFollower follower, UnityAction onTimeJumped = null)
