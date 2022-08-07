@@ -25,7 +25,6 @@ namespace mj112
         {
             SingletonSetPersistantInstance(this);
 
-            Application.targetFrameRate = FPS;
             Time.fixedDeltaTime = DeltaTime;
 
             followers = new List<IClockFollower>();
