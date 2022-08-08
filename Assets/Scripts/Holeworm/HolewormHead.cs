@@ -14,10 +14,10 @@ namespace mj112.Holeworms
 
         [Foldout("Movement")]
         [Tooltip("In units per Clock-second")]
-        public float MoveSpeed;
+        public float MoveSpeedMin, MoveSpeedMax, MoveSpeedAcceleration, MoveSpeedDeceleration;
         [Foldout("Movement")]
         [Tooltip("In degress per Clock-second")]
-        public float TurnSpeed;
+        public float TurnSpeedMin, TurnSpeedMax, TurnSpeedAcceleration;
 
         [Foldout("Segment Control")]
         [Tooltip("In frames")]
@@ -38,6 +38,8 @@ namespace mj112.Holeworms
         public string HolewormEchoTag, ParadoxTag;
 
         HolewormState state;
+
+        float currentMoveSpeed, currentTurnSpeed;
 
         void Start ()
         {
@@ -81,8 +83,19 @@ namespace mj112.Holeworms
         {
             float dt = Clock.Instance.DeltaTime;
 
-            var targetPosition = Rigidbody.position + MoveSpeed * dt * (Vector2)transform.up;
-            var targetRotation = Rigidbody.rotation - input * TurnSpeed * dt;
+            if (input == 0)
+            {
+                currentMoveSpeed = Mathf.Min(currentMoveSpeed + dt * MoveSpeedAcceleration, MoveSpeedMax);
+                currentTurnSpeed = TurnSpeedMin;
+            }
+            else
+            {
+                currentTurnSpeed = Mathf.Min(currentTurnSpeed + dt * TurnSpeedAcceleration, TurnSpeedMax);
+                currentMoveSpeed = Mathf.Max(currentMoveSpeed - dt * MoveSpeedDeceleration, MoveSpeedMin);
+            }
+
+            var targetPosition = Rigidbody.position + currentMoveSpeed * dt * (Vector2)transform.up;
+            var targetRotation = Rigidbody.rotation - input * currentTurnSpeed * dt;
 
             state = HolewormState.CopyOf(state);
             state.RecordEntry(targetPosition, targetRotation);

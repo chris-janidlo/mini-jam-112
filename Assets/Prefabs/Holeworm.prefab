@@ -49,8 +49,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Echo: 0
-  MoveSpeed: 4
-  TurnSpeed: 180
+  MoveSpeedMin: 4
+  MoveSpeedMax: 12
+  MoveSpeedAcceleration: 4
+  MoveSpeedDeceleration: 12
+  TurnSpeedMin: 180
+  TurnSpeedMax: 360
+  TurnSpeedAcceleration: 180
   SegmentFollowDelay: 6
   Segments:
   - {fileID: 6245660922365575732}
