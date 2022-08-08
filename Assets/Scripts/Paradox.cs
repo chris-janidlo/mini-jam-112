@@ -20,21 +20,25 @@ namespace mj112
         public void Kill ()
         {
             Collider.enabled = false;
+
+            _scaleTween?.Kill();
+            StopAllCoroutines();
+
             StartCoroutine(sizeAnimation(false));
         }
 
+        Tween _scaleTween;
         IEnumerator sizeAnimation (bool spawn)
         {
-            StopAllCoroutines();
-
             transform.localScale = spawn ? Vector3.zero : Vector3.one;
 
             float time = spawn ? SpawnAnimationTime : DeathAnimationTime;
             Ease ease = spawn ? SpawnAnimationEase : DeathAnimationEase;
 
-            yield return transform.DOScale(spawn ? 1 : 0, time)
-                .SetEase(ease)
-                .WaitForCompletion();
+            _scaleTween = transform.DOScale(spawn ? 1 : 0, time)
+                .SetEase(ease);
+
+            yield return _scaleTween.WaitForCompletion();
 
             if (!spawn) Destroy(gameObject);
         }
