@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityAtoms.BaseAtoms;
 using NaughtyAttributes;
+using crass;
 
 namespace mj112.Holeworms
 {
@@ -24,6 +25,10 @@ namespace mj112.Holeworms
         [Foldout("Segment Control")]
         public List<HolewormSegement> Segments;
 
+        public BagRandomizer<AudioClip> EatSounds, DeathSounds;
+
+        [Foldout("References")]
+        public AudioSource AudioSource;
         [Foldout("References")]
         public Rigidbody2D Rigidbody;
         [Foldout("References")]
@@ -49,10 +54,12 @@ namespace mj112.Holeworms
 
             if (collider.CompareTag(HolewormEchoTag))
             {
+                AudioSource.PlayOneShot(DeathSounds.GetNext());
                 GameOverManager.Instance.EndGame();
             }
             else if (collider.CompareTag(ParadoxTag))
             {
+                AudioSource.PlayOneShot(EatSounds.GetNext());
                 collider.GetComponent<Paradox>().Kill();
                 ParadoxesEaten.Value++;
             }
