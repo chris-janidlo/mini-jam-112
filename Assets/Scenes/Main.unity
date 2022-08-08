@@ -1164,13 +1164,16 @@ MonoBehaviour:
   TextFadeTime: 0.3
   TitleShowDelay: 0
   SubtitleShowDelay: 0.5
+  MusicFadeTime: 1
   CameraZoomEase: 17
   TextFadeEase: 10
+  MusicFadeEase: 10
   Title: {fileID: 1124316649}
   LeftSubtitle: {fileID: 1547462604}
   RightSubtitle: {fileID: 187732603}
   HorizontalInput: {fileID: 11400000, guid: 047ab622ff52c1c4fbcd877e1ff17038, type: 2}
   ZoomCamera: {fileID: 1480836562}
+  MusicSource: {fileID: 294358986}
 --- !u!1 &485566705
 GameObject:
   m_ObjectHideFlags: 0

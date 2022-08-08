@@ -21,9 +21,9 @@ namespace mj112
         public string MainMenuScene, RestartScene;
 
         [Foldout("Animation Parameters")]
-        public float CameraZoomTime, TextFadeTime, TitleShowDelay, SubtitleShowDelay;
+        public float CameraZoomTime, TextFadeTime, TitleShowDelay, SubtitleShowDelay, MusicFadeTime;
         [Foldout("Animation Parameters")]
-        public Ease CameraZoomEase, TextFadeEase;
+        public Ease CameraZoomEase, TextFadeEase, MusicFadeEase;
 
         [Foldout("References")]
         public TextMeshProUGUI Title, LeftSubtitle, RightSubtitle;
@@ -31,6 +31,8 @@ namespace mj112
         public FloatVariable HorizontalInput;
         [Foldout("References")]
         public Camera ZoomCamera;
+        [Foldout("References")]
+        public AudioSource MusicSource;
 
         bool endingGame, acceptingInput;
         event Action gameOver;
@@ -69,6 +71,10 @@ namespace mj112
         IEnumerator endGameRoutine ()
         {
             Clock.Instance.Stop();
+
+            // don't wait for this because it can happen in parallel with everything else
+            MusicSource.DOFade(0, MusicFadeTime)
+                .SetEase(MusicFadeEase);
 
             yield return DOTween.To(() => ZoomCamera.orthographicSize, x => ZoomCamera.orthographicSize = x, 0.001f, CameraZoomTime)
                 .SetEase(CameraZoomEase)
