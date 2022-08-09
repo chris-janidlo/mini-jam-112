@@ -36,7 +36,8 @@ namespace mj112
             Ease ease = spawn ? SpawnAnimationEase : DeathAnimationEase;
 
             _scaleTween = transform.DOScale(spawn ? 1 : 0, time)
-                .SetEase(ease);
+                .SetEase(ease)
+                .OnKill(() => _scaleTween = null);
 
             yield return _scaleTween.WaitForCompletion();
 
