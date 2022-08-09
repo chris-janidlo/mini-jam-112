@@ -29,11 +29,6 @@ namespace mj112
             spawnParadox();
         }
 
-        void OnDestroy ()
-        {
-            Clock.Instance.Deregister(this);
-        }
-
         public void TimedUpdate ()
         {
             switch (currentState)

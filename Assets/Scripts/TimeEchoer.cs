@@ -72,11 +72,6 @@ namespace mj112
             onTimeJumped();
         }
 
-        void OnDestroy ()
-        {
-            Clock.Instance.Deregister(this, onTimeJumped);
-        }
-
         public void TimedUpdate ()
         {
             int frame = Clock.Instance.FramesElapsedInLoop;

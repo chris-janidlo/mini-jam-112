@@ -14,11 +14,6 @@ namespace mj112
             GameOverManager.Instance.Register(this);
         }
 
-        void OnDestroy ()
-        {
-            Clock.Instance.Deregister(this);
-        }
-
         public void TimedUpdate ()
         {
             Hand.eulerAngles = Clock.Instance.LoopTime * 360 * Vector3.back;
